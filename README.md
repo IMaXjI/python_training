@@ -1,1 +1,1 @@
-# python_training
+# Repository for QA python programming course.
