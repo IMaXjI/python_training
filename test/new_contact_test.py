@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from contacts_methods import help_methods
-from contact import Contact
+from fixture.contacts_methods import help_methods
+from model.contact import Contact
 import pytest
 
 @pytest.fixture
