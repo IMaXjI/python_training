@@ -1,16 +1,8 @@
 # -*- coding: utf-8 -*-
-from fixture.contacts_methods import help_methods
 from model.contact import Contact
-import pytest
-
-@pytest.fixture
-def app(request):
-    fixture = help_methods()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 def test_new_contact(app):
-    app.open_test_page()
+    app.open_home_page()
     app.session.login(username="admin", password="secret")
     app.contact.create(Contact(firstname="Maxim", middlename="Olegovich", lastname="Vasilyev", nickname="MaXj", title="Genius", company="TechArgos", address="Novodmitrovskaya 2b",
                                home_phone="-", cell_phone="70418041804", work_phone="aslfalf", fax="fjafafasj", email_1="vasiafaf@gmail.com", email_2="fjajfafs@yandex.ru",
@@ -18,5 +10,6 @@ def test_new_contact(app):
                                address2="zxvkzlvjz", secondary_phone="afkjalfjaljf", notes="ksdljgslgjksl"))
     app.return_to_home_page()
     app.session.logout()
+
 
 
