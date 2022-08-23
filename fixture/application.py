@@ -19,7 +19,3 @@ class Application:
 
     def destroy(self):
         self.wd.quit()
-
-    def return_to_home_page(self):
-        wd = self.wd
-        wd.find_element_by_link_text("home page").click()
