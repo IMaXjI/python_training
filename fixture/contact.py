@@ -32,15 +32,12 @@ class ContactHelper:
         self.filling_condition_check("email2", contact.email_2)
         self.filling_condition_check("email3", contact.email_3)
         self.filling_condition_check("homepage", contact.homepage)
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.day)
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.month)
+        self.filling_condition_check("bday", contact.day)
+        self.filling_condition_check("bmonth", contact.month)
         self.filling_condition_check("byear", contact.year)
-        wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text(contact.a_day)
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text(contact.a_month)
-        self.filling_condition_check("ayear", contact.year)
+        self.filling_condition_check("aday", contact.a_day)
+        self.filling_condition_check("amonth", contact.a_month)
+        self.filling_condition_check("ayear", contact.a_year)
         self.filling_condition_check("address2", contact.address2)
         self.filling_condition_check("phone2", contact.secondary_phone)
         self.filling_condition_check("notes", contact.notes)
@@ -48,9 +45,20 @@ class ContactHelper:
     def filling_condition_check(self, field_name, text):
         wd = self.app.wd
         if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
+            if field_name == "bday" or \
+                    field_name == "bmonth" or \
+                    field_name == "aday" or \
+                    field_name == "amonth":
+                wd.find_element_by_name(field_name).click()
+                Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+                # wd.find_element_by_name(field_name).click()
+            else:
+                wd.find_element_by_name(field_name).click()
+                wd.find_element_by_name(field_name).clear()
+                wd.find_element_by_name(field_name).send_keys(text)
+        else:
+            pass
+
 
     def delete(self):
         wd = self.app.wd
@@ -64,9 +72,10 @@ class ContactHelper:
     def edit(self, new_contact_data):
         wd = self.app.wd
         # Edit first contact
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[3]/td[8]/a/img").click()
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_contact_form(new_contact_data)
         # Submit update
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+
 
 
