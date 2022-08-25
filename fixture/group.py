@@ -21,6 +21,7 @@ class GroupHelper:
         self.filling_condition_check("group_header", group.header)
         self.filling_condition_check("group_footer", group.footer)
 
+
     def filling_condition_check(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -31,6 +32,7 @@ class GroupHelper:
     def open_group_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
+
 
     def delete(self):
         wd = self.app.wd

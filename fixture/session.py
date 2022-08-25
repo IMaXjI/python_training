@@ -4,8 +4,13 @@ class SessionHelper:
         self.app = app
 
 
+    def open_home_page(self):
+        wd = self.app.wd
+        wd.get("http://172.17.41.29/addressbook/")
+
     def login(self, username, password):
         wd = self.app.wd
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)

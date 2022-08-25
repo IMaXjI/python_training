@@ -1,4 +1,3 @@
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 
 
@@ -76,6 +75,7 @@ class ContactHelper:
         self.fill_contact_form(new_contact_data)
         # Submit update
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+
 
 
 
