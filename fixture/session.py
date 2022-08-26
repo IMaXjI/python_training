@@ -6,7 +6,8 @@ class SessionHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        wd.get("http://172.17.41.29/addressbook/")
+        if not (wd.current_url.endswith('/addressbook') and len(wd.find_elements_by_link_text("Last name")) > 0):
+            wd.get("http://172.17.41.29/addressbook/")
 
     def login(self, username, password):
         wd = self.app.wd
