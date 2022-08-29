@@ -8,4 +8,5 @@ def test_del_group(app):
     app.group.delete()
     new_group_list = app.group.get_group_list()
     assert len(old_group_list) - 1 == len(new_group_list)
-    app.session.open_home_page()
+    old_group_list[0:1] = []
+    assert old_group_list == new_group_list
