@@ -4,5 +4,8 @@ from model.group import Group
 def test_del_group(app):
     if app.group.count() == 0:
         app.group.create(Group(name = "test"))
+    old_group_list = app.group.get_group_list()
     app.group.delete()
+    new_group_list = app.group.get_group_list()
+    assert len(old_group_list) - 1 == len(new_group_list)
     app.session.open_home_page()
