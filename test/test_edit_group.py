@@ -4,7 +4,7 @@ def test_edit_group_name(app):
     if app.group.count() == 0:
         app.group.create(Group(name = "test"))
     old_group_list = app.group.get_group_list()
-    group = Group(name="Changed name")
+    group = Group(name="Changes group name")
     group.id = old_group_list[0].id
     app.group.edit(group)
     new_group_list = app.group.get_group_list()

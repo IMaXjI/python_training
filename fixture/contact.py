@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+from model.contact import Contact
 
 
 
@@ -8,7 +9,7 @@ class ContactHelper:
 
     def open_home_page(self):
         wd = self.app.wd
-        if not (wd.current_url.endswith('/addressbook') and len(wd.find_elements_by_link_text("Last name")) > 0):
+        if not (wd.current_url.endswith('/addressbook/') and len(wd.find_elements_by_link_text("Last name")) > 0):
             wd.get("http://172.17.41.29/addressbook/")
 
     def create(self, contact):
@@ -91,5 +92,14 @@ class ContactHelper:
         return len(wd.find_elements_by_name("selected[]"))
 
 
-
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_home_page()
+        contact_list = []
+        for element in wd.find_elements_by_css_selector('tr[name = "entry"]'):
+            lastname_text = element.find_element_by_xpath("//table[@id = 'maintable']/tbody/tr/td[2]").text
+            firstname_text = element.find_element_by_xpath("//table[@id = 'maintable']/tbody/tr/td[3]").text
+            id = element.find_element_by_name("selected[]").get_attribute("id")
+            contact_list.append(Contact(lastname=lastname_text, firstname=firstname_text, id=id))
+        return contact_list
 
