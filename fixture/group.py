@@ -42,22 +42,37 @@ class GroupHelper:
 
 
     def delete(self):
-        wd = self.app.wd
-        self.open_group_page()
-        self.select_first_group()
-        # Submit deletion
-        wd.find_element_by_name("delete").click()
-        self.return_to_groups_page()
-        self.group_cache = None
+        self.delete_by_index(0)
 
     def select_first_group(self):
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def edit(self, new_group_data):
+    def edit(self):
+        self.edit_by_index(0)
+
+
+    def count(self):
         wd = self.app.wd
         self.open_group_page()
-        self.select_first_group()
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+    def delete_by_index(self, index):
+        wd = self.app.wd
+        self.open_group_page()
+        self.select_group_by_index(index)
+        # submit deletion
+        wd.find_element_by_name("delete").click()
+        self.return_to_groups_page()
+        self.group_cache = None
+
+    def edit_by_index(self, index, new_group_data):
+        wd = self.app.wd
+        self.open_group_page()
+        self.select_group_by_index(index)
         # Open modification form
         wd.find_element_by_name("edit").click()
         # Edit group fields
@@ -68,10 +83,6 @@ class GroupHelper:
         self.group_cache = None
 
 
-    def count(self):
-        wd = self.app.wd
-        self.open_group_page()
-        return len(wd.find_elements_by_name("selected[]"))
 
 
 
