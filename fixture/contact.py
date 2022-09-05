@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import Select
 from model.contact import Contact
+import re
 
 
 
@@ -105,6 +106,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
 
+    def open_contact_view_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_xpath("//img[@alt='Details']")[index].click()
+
     def count(self):
         wd = self.app.wd
         self.open_home_page()
@@ -142,4 +147,18 @@ class ContactHelper:
         secondary_phone = wd.find_element_by_name("phone2").get_attribute("value")
         return Contact(firstname = firstname, lastname=lastname, id=id, home_phone=home_phone, cell_phone=cell_phone,
                        work_phone=work_phone, secondary_phone=secondary_phone)
+
+
+    def get_contact_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_home_page()
+        self.open_contact_view_by_index(index)
+        text = wd.find_element_by_id("content").text
+        home_phone = re.search("H: (.*)", text).group(1)
+        cell_phone = re.search("M: (.*)", text).group(1)
+        work_phone = re.search("W: (.*)", text).group(1)
+        secondary_phone = re.search("P: (.*)", text).group(1)
+        return Contact(home_phone=home_phone, cell_phone=cell_phone,
+                       work_phone=work_phone, secondary_phone=secondary_phone)
+
 
