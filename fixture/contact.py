@@ -127,10 +127,9 @@ class ContactHelper:
                 lastname_text = cells[1].text
                 firstname_text = cells[2].text
                 id = element.find_element_by_name("selected[]").get_attribute("id")
-                all_phones = cells[5].text.splitlines()
+                all_phones = cells[5].text
                 self.contact_cache.append(Contact(lastname=lastname_text, firstname=firstname_text, id=id,
-                                                  home_phone=all_phones[0],cell_phone=all_phones[1],
-                                                  work_phone=all_phones[2],secondary_phone=all_phones[3]))
+                                                  all_phones=all_phones))
         return list(self.contact_cache)
 
 
@@ -145,7 +144,7 @@ class ContactHelper:
         work_phone = wd.find_element_by_name("work").get_attribute("value")
         cell_phone = wd.find_element_by_name("mobile").get_attribute("value")
         secondary_phone = wd.find_element_by_name("phone2").get_attribute("value")
-        return Contact(firstname = firstname, lastname=lastname, id=id, home_phone=home_phone, cell_phone=cell_phone,
+        return Contact(firstname=firstname, lastname=lastname, id=id, home_phone=home_phone, cell_phone=cell_phone,
                        work_phone=work_phone, secondary_phone=secondary_phone)
 
 
