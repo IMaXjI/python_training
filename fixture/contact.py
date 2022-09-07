@@ -126,10 +126,12 @@ class ContactHelper:
                 cells = element.find_elements_by_tag_name("td")
                 lastname_text = cells[1].text
                 firstname_text = cells[2].text
+                address_text = cells[3].text
                 id = element.find_element_by_name("selected[]").get_attribute("id")
+                all_mails = cells[4].text
                 all_phones = cells[5].text
                 self.contact_cache.append(Contact(lastname=lastname_text, firstname=firstname_text, id=id,
-                                                  all_phones=all_phones))
+                                                  address=address_text, all_mails=all_mails, all_phones=all_phones))
         return list(self.contact_cache)
 
 
@@ -137,14 +139,19 @@ class ContactHelper:
         wd = self.app.wd
         self.open_home_page()
         self.find_edit_button_by_index(index)
+        id = wd.find_element_by_name("id").get_attribute("value")
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
         lastname = wd.find_element_by_name("lastname").get_attribute("value")
-        id = wd.find_element_by_name("id").get_attribute("value")
+        address = wd.find_element_by_name("address").get_attribute("value")
+        email_1 = wd.find_element_by_name("email").get_attribute("value")
+        email_2 = wd.find_element_by_name("email2").get_attribute("value")
+        email_3 = wd.find_element_by_name("email3").get_attribute("value")
         home_phone = wd.find_element_by_name("home").get_attribute("value")
         work_phone = wd.find_element_by_name("work").get_attribute("value")
         cell_phone = wd.find_element_by_name("mobile").get_attribute("value")
         secondary_phone = wd.find_element_by_name("phone2").get_attribute("value")
-        return Contact(firstname=firstname, lastname=lastname, id=id, home_phone=home_phone, cell_phone=cell_phone,
+        return Contact(firstname=firstname, lastname=lastname, id=id, address=address, email_1=email_1,
+                       email_2=email_2, email_3=email_3, home_phone=home_phone, cell_phone=cell_phone,
                        work_phone=work_phone, secondary_phone=secondary_phone)
 
 
