@@ -8,14 +8,10 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
-    def open_home_page(self):
-        wd = self.app.wd
-        if not (wd.current_url.endswith('/addressbook/') and len(wd.find_elements_by_link_text("Last name")) > 0):
-            wd.get("http://172.17.41.29/addressbook/")
 
     def create(self, contact):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         # Init contact creation
         wd.find_element_by_link_text("add new").click()
         self.fill_contact_form(contact)
@@ -74,7 +70,7 @@ class ContactHelper:
 
     def delete_by_index(self, index):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         self.select_contact_by_index(index)
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
@@ -95,7 +91,7 @@ class ContactHelper:
 
     def edit_by_index(self, index, new_contact_data):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         self.find_edit_button_by_index(index)
         self.fill_contact_form(new_contact_data)
         # Submit update
@@ -112,7 +108,7 @@ class ContactHelper:
 
     def count(self):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         return len(wd.find_elements_by_name("selected[]"))
 
 
@@ -120,7 +116,7 @@ class ContactHelper:
     def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
-            self.open_home_page()
+            self.app.open_home_page()
             self.contact_cache = []
             for element in wd.find_elements_by_css_selector("tr[name = 'entry']"):
                 cells = element.find_elements_by_tag_name("td")
@@ -137,7 +133,7 @@ class ContactHelper:
 
     def get_contact_info_from_edit_page(self, index):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         self.find_edit_button_by_index(index)
         id = wd.find_element_by_name("id").get_attribute("value")
         firstname = wd.find_element_by_name("firstname").get_attribute("value")
@@ -157,7 +153,7 @@ class ContactHelper:
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
-        self.open_home_page()
+        self.app.open_home_page()
         self.open_contact_view_by_index(index)
         text = wd.find_element_by_id("content").text
         home_phone = re.search("H: (.*)", text).group(1)
