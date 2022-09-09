@@ -164,14 +164,13 @@ class ContactHelper:
                        work_phone=work_phone, secondary_phone=secondary_phone)
 
     def clear(self, s):
-        return re.sub("[() -]", "", s)
+        return re.sub("[() . -]", "", s)
 
     def merge_info_like_on_home_page(self, contact, info_type):
         if info_type == 'mail':
             return "\n".join(filter(lambda x: x != "",
-                                    map(lambda x: self.clear(x),
-                                        filter(lambda x: x is not None,
-                                               [contact.email_1, contact.email_2, contact.email_3]))))
+                                    filter(lambda x: x is not None,
+                                        [contact.email_1, contact.email_2, contact.email_3])))
 
         return "\n".join(filter(lambda x: x != "",
                                 map(lambda x: self.clear(x),
