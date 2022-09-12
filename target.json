@@ -1,0 +1,5 @@
+{
+  "baseUrl" : "http://172.17.41.29/addressbook/",
+  "username" : "admin",
+  "password" : "secret"
+}
