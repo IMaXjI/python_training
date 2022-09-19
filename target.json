@@ -1,5 +1,15 @@
 {
-  "baseUrl" : "http://172.17.41.29/addressbook/",
-  "username" : "admin",
-  "password" : "secret"
+  "web": {
+    "baseUrl" : "http://172.17.41.29/addressbook/",
+    "username" : "admin",
+    "password" : "secret"
+  },
+
+  "db": {
+    "host": "172.17.41.29",
+    "name": "addressbook",
+    "user": "admin",
+    "password": "secret"
+  }
+
 }
