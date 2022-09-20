@@ -1,11 +1,14 @@
 import pymysql.cursors
+from fixture.orm import ORMFixture
 
-connection = pymysql.connect(host="172.17.41.29", database="addressbook", user="admin", password="secret")
+db = ORMFixture(host="172.17.41.29", name="addressbook", user="admin", password="secret")
+# connection = pymysql.connect(host="172.17.41.29", database="addressbook", user="admin", password="secret")
 
 try:
-    cursor = connection.cursor()
-    cursor.execute("select * from group_list")
-    for row in cursor.fetchall():
-        print(row)
+    l = db.get_contact_list()
+    for item in l:
+        print(item)
+    print(len(l))
 finally:
-    connection.close()
+    # db.destroy()
+    pass
