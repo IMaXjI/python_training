@@ -3,7 +3,7 @@ import random
 
 def test_del_group(app, db, check_ui):
     if len(db.get_group_list()) == 0:
-        app.group.create(Group(name = "test"))
+        app.group.create(Group(name="test"))
     old_group_list = db.get_group_list()
     group = random.choice(old_group_list)
     app.group.delete_by_id(group.id)

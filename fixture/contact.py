@@ -85,6 +85,9 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def edit(self):
         self.edit_by_index(0)
@@ -162,6 +165,17 @@ class ContactHelper:
         secondary_phone = re.search("P: (.*)", text).group(1)
         return Contact(home_phone=home_phone, cell_phone=cell_phone,
                        work_phone=work_phone, secondary_phone=secondary_phone)
+
+    def delete_by_id(self, id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        self.select_contact_by_id(id)
+        # Submit deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        wd.switch_to.alert.accept()
+        self.contact_cache = None
+
+
 
     def clear(self, s):
         return re.sub("[() .-]", "", s)

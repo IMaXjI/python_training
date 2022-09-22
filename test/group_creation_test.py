@@ -8,6 +8,6 @@ def test_group_creation(app, db, json_groups):
     app.group.create(group)
     new_group_list = db.get_group_list()
     old_group_list.append(group)
-    assert sorted(old_group_list, key = Group.id_or_max) == sorted(new_group_list, key = Group.id_or_max)
+    assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)
 
 
