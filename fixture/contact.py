@@ -101,9 +101,23 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
         self.contact_cache = None
 
+    def edit_by_id(self, id, new_contact_data):
+        wd = self.app.wd
+        self.app.open_home_page()
+        self.find_edit_button_by_id(id)
+        self.fill_contact_form(new_contact_data)
+        # Submit update
+        wd.find_element_by_xpath("//div[@id='content']/form/input[22]").click()
+        self.contact_cache = None
+
+
     def find_edit_button_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
+
+    def find_edit_button_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % id).click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
