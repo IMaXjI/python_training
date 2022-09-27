@@ -1,18 +1,29 @@
-from random import randrange
+from model.contact import Contact
 import re
 
 
-def test_info_on_home_page(app):
-    index = randrange(app.contact.count())
-    contact_info_from_home_page = app.contact.get_contact_list()[index]
-    contact_info_from_edit_page = app.contact.get_contact_info_from_edit_page(index)
-    assert contact_info_from_home_page.all_phones == \
-           app.contact.merge_info_like_on_home_page(contact_info_from_edit_page, 'phone')
-    assert contact_info_from_home_page.all_mails == \
-           app.contact.merge_info_like_on_home_page(contact_info_from_edit_page, 'mail')
-    assert contact_info_from_home_page.address == contact_info_from_edit_page.address
-    assert contact_info_from_home_page.firstname == contact_info_from_edit_page.firstname
-    assert contact_info_from_home_page.lastname == contact_info_from_edit_page.lastname
+def test_info_on_home_page(app, db):
+    contact_info_db = sorted(db.get_contact_list(), key=Contact.id_or_max)
+    contact_info_homepage = sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+    for item in range(len(contact_info_homepage)):
+        assert app.contact.clear(contact_info_homepage[item].firstname) == app.contact.clear(contact_info_db[item].firstname)
+        assert app.contact.clear(contact_info_homepage[item].lastname) == app.contact.clear(contact_info_db[item].lastname)
+        assert app.contact.clear(contact_info_homepage[item].address) == app.contact.clear(contact_info_db[item].address)
+        assert contact_info_homepage[item].all_phones == app.contact.merge_info_like_on_home_page(contact_info_db[item], info_type='phone')
+        assert contact_info_homepage[item].all_mails == app.contact.merge_info_like_on_home_page(contact_info_db[item], info_type='mail')
+
+
+
+    #
+    # assert contact_info_from_home_page.all_phones == \
+    #        app.contact.merge_info_like_on_home_page(contact_info_from_edit_page, 'phone')
+    # assert contact_info_from_home_page.all_mails == \
+    #        app.contact.merge_info_like_on_home_page(contact_info_from_edit_page, 'mail')
+    # assert contact_info_from_home_page.address == contact_info_from_edit_page.address
+    # assert contact_info_from_home_page.firstname == contact_info_from_edit_page.firstname
+    # assert contact_info_from_home_page.lastname == contact_info_from_edit_page.lastname
+
+
 
 
 # def clear(s):

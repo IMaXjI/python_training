@@ -192,7 +192,7 @@ class ContactHelper:
 
 
     def clear(self, s):
-        return re.sub("[() .-]", "", s)
+        return re.sub("[() /.-]", "", s)
 
     def merge_info_like_on_home_page(self, contact, info_type):
         if info_type == 'mail':
