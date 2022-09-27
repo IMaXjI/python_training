@@ -7,7 +7,6 @@ def test_edit_contact_name(app, db, check_ui):
         app.contact.create(Contact(firstname="Test"))
     old_contact_list = db.get_contact_list()
     contact = random.choice(old_contact_list)
-    test = contact.id
     new_data = Contact(firstname="TEST WORKS", lastname="TEST WORKS")
     app.contact.edit_by_id(contact.id, new_data)
     new_contact_list = db.get_contact_list()

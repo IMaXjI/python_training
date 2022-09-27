@@ -75,6 +75,7 @@ class ContactHelper:
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        self.app.open_home_page()
         self.contact_cache = None
 
     def select_first_contact(self):
@@ -117,7 +118,7 @@ class ContactHelper:
 
     def find_edit_button_by_id(self, id):
         wd = self.app.wd
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[%s]/td[8]/a/img" % id).click()
+        wd.find_element_by_css_selector("tr[name='entry'] a[href='edit.php?id=%s'" % id).click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
@@ -187,6 +188,7 @@ class ContactHelper:
         # Submit deletion
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         wd.switch_to.alert.accept()
+        self.app.open_home_page()
         self.contact_cache = None
 
 
