@@ -19,6 +19,16 @@ class ContactHelper:
         wd.find_element_by_name("submit").click()
         self.contact_cache = None
 
+    def add_contact_to_group(self, id, group_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        self.select_contact_by_id(id)
+        # Choose group from drop list for contact addition
+        wd.find_element_by_xpath("//select[@name='to_group']//option[@value='%s']" %group_id).click()
+        # Submit addition
+        wd.find_element_by_name("add").click()
+        self.app.open_home_page()
+        self.contact_cache = None
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
