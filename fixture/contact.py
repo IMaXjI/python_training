@@ -27,7 +27,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//select[@name='to_group']//option[@value='%s']" %group_id).click()
         # Submit addition
         wd.find_element_by_name("add").click()
-        self.app.open_home_page()
+        # Go to chosen group page
+        wd.find_element_by_xpath("//a[@href='./?group=%s']" %group_id).click()
         self.contact_cache = None
 
     def fill_contact_form(self, contact):
@@ -130,6 +131,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_xpath("//a[@href ='edit.php?id=%s']" %id).click()
 
+    def select_group_to_display_contacts(self, group_id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//select[@name='group']/option[@value='%s']" %group_id).click()
+
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
@@ -191,6 +196,21 @@ class ContactHelper:
         secondary_phone = re.search("P: (.*)", text).group(1)
         return Contact(home_phone=home_phone, cell_phone=cell_phone,
                        work_phone=work_phone, secondary_phone=secondary_phone)
+
+    def get_contact_list_from_group_page(self,id):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.app.open_home_page
+            self.select_group_to_display_contacts(id)
+            self.contact_cache = []
+            for element in wd.find_elements_by_css_selector("tr[name = 'entry']"):
+                cells = element.find_elements_by_tag_name("td")
+                lastname_text = cells[1].text
+                firstname_text = cells[2].text
+                id = element.find_element_by_name("selected[]").get_attribute("id")
+                self.contact_cache.append(Contact(lastname=lastname_text, firstname=firstname_text, id=id))
+        return list(self.contact_cache)
+
 
     def delete_by_id(self, id):
         wd = self.app.wd

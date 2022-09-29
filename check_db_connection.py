@@ -6,7 +6,7 @@ db = ORMFixture(host="172.17.41.29", name="addressbook", user="admin", password=
 # connection = pymysql.connect(host="172.17.41.29", database="addressbook", user="admin", password="secret")
 
 try:
-    l = db.get_contacts_in_group(Group(id="2"))
+    l = db.get_contacts_not_in_group(Group(id="2"))
     for item in l:
         print(item)
     print(len(l))
