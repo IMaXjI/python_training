@@ -31,6 +31,17 @@ class ContactHelper:
         wd.find_element_by_xpath("//a[@href='./?group=%s']" %group_id).click()
         self.contact_cache = None
 
+    def remove_contact_from_group(self, id,  group_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        self.select_group_to_display_contacts(group_id)
+        self.select_contact_by_id(id)
+        # Submit removal
+        wd.find_element_by_name("remove").click()
+        # Go to chosen group page
+        wd.find_element_by_xpath("//a[@href='./?group=%s']" %group_id).click()
+        self.contact_cache = None
+
     def fill_contact_form(self, contact):
         wd = self.app.wd
         self.filling_condition_check("firstname", contact.firstname)
@@ -99,7 +110,7 @@ class ContactHelper:
 
     def select_contact_by_id(self, id):
         wd = self.app.wd
-        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        wd.find_element_by_xpath("//input[@id='%s']" %id).click()
 
     def edit(self):
         self.edit_by_index(0)
@@ -133,7 +144,8 @@ class ContactHelper:
 
     def select_group_to_display_contacts(self, group_id):
         wd = self.app.wd
-        wd.find_element_by_xpath("//select[@name='group']/option[@value='%s']" %group_id).click()
+        wd.find_element_by_xpath("//select[@name='group']//option[@value='%s']" %group_id).click()
+
 
 
     def open_contact_view_by_index(self, index):
