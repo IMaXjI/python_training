@@ -1,14 +1,12 @@
 from model.contact import Contact
-from fixture.orm import ORMFixture
 from model.group import Group
 import random
 
-orm = ORMFixture(host="172.17.41.29", name="addressbook", user="admin", password="secret")
 
-def test_contact_in_group(app, db, check_ui):
+def test_contact_in_group(app, db, orm, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="TEST CONTACT"))
-    elif len(db.get_group_list()) == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(Group(name="TEST GROUP"))
     contact_list = db.get_contact_list()
     group_list = db.get_group_list()
@@ -24,10 +22,10 @@ def test_contact_in_group(app, db, check_ui):
         assert sorted(contacts_in_group_db_new, key=Contact.id_or_max) == sorted(contacts_in_groups_ui, key=Contact.id_or_max)
 
 
-def test_contact_not_in_group(app, db):
+def test_contact_not_in_group(app, db, orm):
     if len(db.get_contact_list()) == 0:
         app.contact.create(Contact(firstname="TEST CONTACT"))
-    elif len(db.get_group_list()) == 0:
+    if len(db.get_group_list()) == 0:
         app.group.create(Group(name="TEST GROUP"))
     group_list = db.get_group_list()
     random_group = random.choice(group_list)

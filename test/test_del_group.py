@@ -12,5 +12,5 @@ def test_del_group(app, db, check_ui):
     old_group_list.remove(group)
     assert old_group_list == new_group_list
     if check_ui:
-        assert sorted(new_group_list, key = Group.id_or_max)  == sorted(app.group.get_group_list(), key = Group.id_or_max)
+        assert sorted(new_group_list, key=Group.id_or_max)  == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
