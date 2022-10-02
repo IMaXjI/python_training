@@ -1,5 +1,4 @@
 from model.contact import Contact
-import re
 
 
 def test_info_on_home_page(app, db):
