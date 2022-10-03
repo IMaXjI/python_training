@@ -7,10 +7,13 @@ def test_edit_group_name(app, db, check_ui):
         app.group.create(Group(name = "test"))
     old_group_list = db.get_group_list()
     group = random.choice(old_group_list)
-    new_data = Group(header="Changes group header")
+    new_data = Group(name="PYTHON")
     app.group.edit_by_id(group.id, new_data)
     new_group_list = db.get_group_list()
-    assert len(old_group_list) == app.group.count()
+    for item in old_group_list:
+        if item.id == group.id:
+            item.name = new_data.name
+    assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)
     if check_ui:
         assert sorted(new_group_list, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 

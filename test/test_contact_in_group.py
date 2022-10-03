@@ -12,6 +12,8 @@ def test_contact_in_group(app, db, orm, check_ui):
     group_list = db.get_group_list()
     random_contact = random.choice(contact_list)
     random_group = random.choice(group_list)
+    contacts_in_group_db_old = orm.get_contacts_in_group(Group(id=random_group.id))
+
     app.contact.add_contact_to_group(random_contact.id, random_group.id)
     contacts_in_group_db = orm.get_contacts_in_group(Group(id=random_group.id))
     assert random_contact in contacts_in_group_db
