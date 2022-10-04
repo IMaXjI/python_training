@@ -10,9 +10,15 @@ def test_contact_in_group(app, db, orm, check_ui):
         app.group.create(Group(name="TEST GROUP"))
     group_list = db.get_group_list()
     random_group = random.choice(group_list)
-    random_contact = random.choice(orm.get_contacts_not_in_group(Group(id=random_group.id)))
-    contacts_in_group_db_old = orm.get_contacts_in_group(Group(id=random_group.id))
-    assert random_contact not in contacts_in_group_db_old
+
+    # Contacts without groups existence validation
+    contacts_not_in_group = orm.get_contacts_not_in_group(Group(id=random_group.id))
+    if len(contacts_not_in_group) == 0:
+        app.contact.create(Contact(firstname="TEST CONTACT"))
+        new_contact = orm.get_contacts_not_in_group(Group(id=random_group.id))
+        contacts_not_in_group.append(new_contact)
+    random_contact = random.choice(contacts_not_in_group)
+
     # Add chosen contact into chosen group
     app.contact.add_contact_to_group(random_contact.id, random_group.id)
     contacts_in_group_db_new = orm.get_contacts_in_group(Group(id=random_group.id))
