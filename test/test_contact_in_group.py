@@ -8,18 +8,18 @@ def test_contact_in_group(app, db, orm, check_ui):
         app.contact.create(Contact(firstname="TEST CONTACT"))
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name="TEST GROUP"))
-    contact_list = db.get_contact_list()
     group_list = db.get_group_list()
-    random_contact = random.choice(contact_list)
     random_group = random.choice(group_list)
+    random_contact = random.choice(orm.get_contacts_not_in_group(Group(id=random_group.id)))
     contacts_in_group_db_old = orm.get_contacts_in_group(Group(id=random_group.id))
-
+    assert random_contact not in contacts_in_group_db_old
+    # Add chosen contact into chosen group
     app.contact.add_contact_to_group(random_contact.id, random_group.id)
-    contacts_in_group_db = orm.get_contacts_in_group(Group(id=random_group.id))
-    assert random_contact in contacts_in_group_db
+    contacts_in_group_db_new = orm.get_contacts_in_group(Group(id=random_group.id))
+    assert random_contact in contacts_in_group_db_new
     if check_ui:
         contacts_in_groups_ui = app.contact.get_contact_list_from_group_page(random_group.id)
-        assert sorted(contacts_in_group_db, key=Contact.id_or_max) == sorted(contacts_in_groups_ui, key=Contact.id_or_max)
+        assert sorted(contacts_in_group_db_new, key=Contact.id_or_max) == sorted(contacts_in_groups_ui, key=Contact.id_or_max)
 
 
 def test_contact_not_in_group(app, db, orm):
