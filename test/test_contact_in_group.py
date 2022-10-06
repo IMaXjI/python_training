@@ -14,9 +14,8 @@ def test_contact_in_group(app, db, orm, check_ui):
     # Contacts without groups existence validation
     contacts_not_in_group = orm.get_contacts_not_in_group(Group(id=random_group.id))
     if len(contacts_not_in_group) == 0:
-        app.contact.create(Contact(firstname="TEST CONTACT"))
-        new_contact = orm.get_contacts_not_in_group(Group(id=random_group.id))
-        contacts_not_in_group.append(new_contact)
+        app.contact.create(Contact(firstname="Contact for group"))
+        contacts_not_in_group = orm.get_contacts_not_in_group(Group(id=random_group.id))
     random_contact = random.choice(contacts_not_in_group)
 
     # Add chosen contact into chosen group
