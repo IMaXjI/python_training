@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="6" time="66.396" timestamp="2022-10-13T11:28:54.922521" hostname="LAPTOP-JP2G8O81"><testcase classname="test.group_creation_test" name="test_group_creation[None:::]" time="18.425" /><testcase classname="test.group_creation_test" name="test_group_creation[None:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B]" time="9.268" /><testcase classname="test.group_creation_test" name="test_group_creation[None:namey7-N:headeroJ:footerL}1%']" time="9.256"><failure message="assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]&#10;  Left contains one more item: None:namey7-N:headeroJ:footerL}1%'&#10;  Full diff:&#10;    [&#10;     1:TEST GROUP::,&#10;     2:::,&#10;     3:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     4:name*x:header~u!Vf-:footerb,&#10;     5:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     6:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     7:::,&#10;     8:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     9:name*x:header~u!Vf-:footerb,&#10;     10:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     11:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     12:::,&#10;     13:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     14:name*x:header~u!Vf-:footerb,&#10;     15:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     16:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     17:::,&#10;     18:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;  +  None:namey7-N:headeroJ:footerL}1%',&#10;    ]">app = &lt;fixture.application.Application object at 0x000001E8C3D76D60&gt;
+db = &lt;fixture.db.DbFixture object at 0x000001E8C3D76CD0&gt;
+json_groups = None:namey7-N:headeroJ:footerL}1%'
+
+    def test_group_creation(app, db, json_groups):
+        group = json_groups
+        old_group_list = db.get_group_list()
+        app.group.create(group)
+        new_group_list = db.get_group_list()
+        old_group_list.append(group)
+&gt;       assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)
+E       assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]
+E         Left contains one more item: None:namey7-N:headeroJ:footerL}1%'
+E         Full diff:
+E           [
+E            1:TEST GROUP::,
+E            2:::,
+E            3:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            4:name*x:header~u!Vf-:footerb,
+E            5:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            6:name"`m]{Ela:headerb:footerVHj:,
+E            7:::,
+E            8:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            9:name*x:header~u!Vf-:footerb,
+E            10:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            11:name"`m]{Ela:headerb:footerVHj:,
+E            12:::,
+E            13:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            14:name*x:header~u!Vf-:footerb,
+E            15:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            16:name"`m]{Ela:headerb:footerVHj:,
+E            17:::,
+E            18:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E         +  None:namey7-N:headeroJ:footerL}1%',
+E           ]
+
+test\group_creation_test.py:11: AssertionError</failure></testcase><testcase classname="test.group_creation_test" name="test_group_creation[None:name&lt;|vu&gt;*x:header~u!Vf-:footerb]" time="9.509"><failure message="assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]&#10;  At index 18 diff: None:name&lt;|vu&gt;*x:header~u!Vf-:footerb != 19:name*x:header~u!Vf-:footerb&#10;  Full diff:&#10;    [&#10;     1:TEST GROUP::,&#10;     2:::,&#10;     3:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     4:name*x:header~u!Vf-:footerb,&#10;     5:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     6:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     7:::,&#10;     8:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     9:name*x:header~u!Vf-:footerb,&#10;     10:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     11:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     12:::,&#10;     13:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;     14:name*x:header~u!Vf-:footerb,&#10;     15:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,&#10;     16:name&quot;`m]{Ela:headerb:footerVHj:,&#10;     17:::,&#10;     18:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,&#10;  -  19:name*x:header~u!Vf-:footerb,&#10;  ?  ^^&#10;  +  None:name&lt;|vu&gt;*x:header~u!Vf-:footerb,&#10;  ?  ^^^^     +++++&#10;    ]">app = &lt;fixture.application.Application object at 0x000001E8C3D76D60&gt;
+db = &lt;fixture.db.DbFixture object at 0x000001E8C3D76CD0&gt;
+json_groups = None:name&lt;|vu&gt;*x:header~u!Vf-:footerb
+
+    def test_group_creation(app, db, json_groups):
+        group = json_groups
+        old_group_list = db.get_group_list()
+        app.group.create(group)
+        new_group_list = db.get_group_list()
+        old_group_list.append(group)
+&gt;       assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)
+E       assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]
+E         At index 18 diff: None:name&lt;|vu&gt;*x:header~u!Vf-:footerb != 19:name*x:header~u!Vf-:footerb
+E         Full diff:
+E           [
+E            1:TEST GROUP::,
+E            2:::,
+E            3:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            4:name*x:header~u!Vf-:footerb,
+E            5:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            6:name"`m]{Ela:headerb:footerVHj:,
+E            7:::,
+E            8:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            9:name*x:header~u!Vf-:footerb,
+E            10:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            11:name"`m]{Ela:headerb:footerVHj:,
+E            12:::,
+E            13:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E            14:name*x:header~u!Vf-:footerb,
+E            15:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW,
+E            16:name"`m]{Ela:headerb:footerVHj:,
+E            17:::,
+E            18:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B,
+E         -  19:name*x:header~u!Vf-:footerb,
+E         ?  ^^
+E         +  None:name&lt;|vu&gt;*x:header~u!Vf-:footerb,
+E         ?  ^^^^     +++++
+E           ]
+
+test\group_creation_test.py:11: AssertionError</failure></testcase><testcase classname="test.group_creation_test" name="test_group_creation[None:nameZ;Z:header #&gt;I@MA:footerPT &amp;R0XW]" time="9.734" /><testcase classname="test.group_creation_test" name="test_group_creation[None:name&quot;`m]{Ela:headerb:footerVHj:]" time="10.017" /></testsuite></testsuites>
