@@ -1,6 +1,6 @@
 Scenario Outline: Add new contact
   Given a contact list
-  Given a contact with <id>, <firstname> and <lastname>
+  Given a contact with <firstname> and <lastname>
   When I add new contact to the list
   Then the new contact list is equal to the old list with new contact
 

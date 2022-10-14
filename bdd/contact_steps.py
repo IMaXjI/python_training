@@ -17,7 +17,7 @@ def non_empty_contact_list(db, app):
 def random_contact(non_empty_contact_list):
     return random.choice(non_empty_contact_list)
 
-@given('a contact with <id>, <firstname> and <lastname>', target_fixture='new_contact')
+@given('a contact with <firstname> and <lastname>', target_fixture='new_contact')
 def new_contact(firstname, lastname):
     return Contact(firstname=firstname, lastname=lastname)
 
