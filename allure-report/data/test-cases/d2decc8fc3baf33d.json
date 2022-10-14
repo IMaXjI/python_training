@@ -1,0 +1,195 @@
+{
+  "uid" : "d2decc8fc3baf33d",
+  "name" : "test_group_creation[None:namey7-N:headeroJ:footerL}1%']",
+  "fullName" : "test.group_creation_test#test_group_creation",
+  "historyId" : "df8370f2eb29d529ec1f57ca4f651399",
+  "time" : {
+    "start" : 1665738000463,
+    "stop" : 1665738007677,
+    "duration" : 7214
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\n  Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\n  Use -v to get more diff",
+  "statusTrace" : "app = <fixture.application.Application object at 0x0000022087391160>, db = <fixture.db.DbFixture object at 0x000002208737C310>, json_groups = None:namey7-N:headeroJ:footerL}1%'\n\n    def test_group_creation(app, db, json_groups):\n        group = json_groups\n        with allure.step('Given a contact list'):\n            old_group_list = db.get_group_list()\n        with allure.step('When I add a new contact %s to the list' %group):\n            app.group.create(group)\n        with allure.step('Then the new contact list is equal to the old list with new contact'):\n            new_group_list = db.get_group_list()\n            old_group_list.append(group)\n>           assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)\nE           AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\nE             Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\nE             Use -v to get more diff\n\ntest\\group_creation_test.py:15: AssertionError",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "app",
+    "time" : {
+      "start" : 1665738000438,
+      "stop" : 1665738000462,
+      "duration" : 24
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1665737980208,
+      "stop" : 1665737980230,
+      "duration" : 22
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1665737980208,
+      "stop" : 1665737980208,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\n  Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\n  Use -v to get more diff",
+    "statusTrace" : "app = <fixture.application.Application object at 0x0000022087391160>, db = <fixture.db.DbFixture object at 0x000002208737C310>, json_groups = None:namey7-N:headeroJ:footerL}1%'\n\n    def test_group_creation(app, db, json_groups):\n        group = json_groups\n        with allure.step('Given a contact list'):\n            old_group_list = db.get_group_list()\n        with allure.step('When I add a new contact %s to the list' %group):\n            app.group.create(group)\n        with allure.step('Then the new contact list is equal to the old list with new contact'):\n            new_group_list = db.get_group_list()\n            old_group_list.append(group)\n>           assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)\nE           AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\nE             Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\nE             Use -v to get more diff\n\ntest\\group_creation_test.py:15: AssertionError",
+    "steps" : [ {
+      "name" : "Given a contact list",
+      "time" : {
+        "start" : 1665738000463,
+        "stop" : 1665738000465,
+        "duration" : 2
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "When I add a new contact None:namey7-N:headeroJ:footerL}1%' to the list",
+      "time" : {
+        "start" : 1665738000465,
+        "stop" : 1665738007673,
+        "duration" : 7208
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : false,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false
+    }, {
+      "name" : "Then the new contact list is equal to the old list with new contact",
+      "time" : {
+        "start" : 1665738007673,
+        "stop" : 1665738007676,
+        "duration" : 3
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\n  Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\n  Use -v to get more diff\n",
+      "statusTrace" : "  File \"C:\\Projects\\Python_training\\test\\group_creation_test.py\", line 15, in test_group_creation\n    assert sorted(old_group_list, key=Group.id_or_max) == sorted(new_group_list, key=Group.id_or_max)\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "hasContent" : true,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "hasContent" : true,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : true
+  },
+  "afterStages" : [ {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1665738029516,
+      "stop" : 1665738029516,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  }, {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1665738029517,
+      "stop" : 1665738030193,
+      "duration" : 676
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "hasContent" : false,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "test"
+  }, {
+    "name" : "suite",
+    "value" : "group_creation_test"
+  }, {
+    "name" : "host",
+    "value" : "MVasiliev-Vostro5400"
+  }, {
+    "name" : "thread",
+    "value" : "6236-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test.group_creation_test"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None:namey7-N:headeroJ:footerL}1%'"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "d2decc8fc3baf33d.json",
+  "parameterValues" : [ "None:namey7-N:headeroJ:footerL}1%'" ]
+}

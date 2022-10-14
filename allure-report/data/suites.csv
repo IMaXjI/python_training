@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Oct 14 12:00:22 MSK 2022","Fri Oct 14 12:00:29 MSK 2022","7202","test","group_creation_test","","","","test_group_creation[None:name""`m]{Ela:headerb:footerVHj:]",""
+"failed","Fri Oct 14 12:00:00 MSK 2022","Fri Oct 14 12:00:07 MSK 2022","7214","test","group_creation_test","","","","test_group_creation[None:namey7-N:headeroJ:footerL}1%']",""
+"passed","Fri Oct 14 12:00:15 MSK 2022","Fri Oct 14 12:00:22 MSK 2022","7187","test","group_creation_test","","","","test_group_creation[None:nameZ;Z:header #>I@MA:footerPT &R0XW]",""
+"failed","Fri Oct 14 12:00:07 MSK 2022","Fri Oct 14 12:00:15 MSK 2022","7142","test","group_creation_test","","","","test_group_creation[None:name<|vu>*x:header~u!Vf-:footerb]",""
+"passed","Fri Oct 14 11:59:48 MSK 2022","Fri Oct 14 11:59:53 MSK 2022","4345","test","group_creation_test","test_group_creation[None","","","test_group_creation[None:::]",""
+"passed","Fri Oct 14 11:59:53 MSK 2022","Fri Oct 14 12:00:00 MSK 2022","7229","test","group_creation_test","","","","test_group_creation[None:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B]",""

@@ -1,0 +1,81 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "test.group_creation_test",
+    "children" : [ {
+      "name" : "test_group_creation[None:::]",
+      "uid" : "d56500950813552b",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1665737988824,
+        "stop" : 1665737993169,
+        "duration" : 4345
+      },
+      "flaky" : false,
+      "parameters" : [ "None:::" ]
+    }, {
+      "name" : "test_group_creation[None:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B]",
+      "uid" : "5fbd71e72ad8f326",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1665737993204,
+        "stop" : 1665738000433,
+        "duration" : 7229
+      },
+      "flaky" : false,
+      "parameters" : [ "None:nameDLK?)?r=}:headerd?a#@Oyn:footer  u?4B" ]
+    }, {
+      "name" : "test_group_creation[None:namey7-N:headeroJ:footerL}1%']",
+      "uid" : "d2decc8fc3baf33d",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "failed",
+      "time" : {
+        "start" : 1665738000463,
+        "stop" : 1665738007677,
+        "duration" : 7214
+      },
+      "flaky" : false,
+      "parameters" : [ "None:namey7-N:headeroJ:footerL}1%'" ]
+    }, {
+      "name" : "test_group_creation[None:name<|vu>*x:header~u!Vf-:footerb]",
+      "uid" : "c89d517a4e6d65b4",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "failed",
+      "time" : {
+        "start" : 1665738007924,
+        "stop" : 1665738015066,
+        "duration" : 7142
+      },
+      "flaky" : false,
+      "parameters" : [ "None:name<|vu>*x:header~u!Vf-:footerb" ]
+    }, {
+      "name" : "test_group_creation[None:nameZ;Z:header #>I@MA:footerPT &R0XW]",
+      "uid" : "8a53d2eb298a397b",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1665738015098,
+        "stop" : 1665738022285,
+        "duration" : 7187
+      },
+      "flaky" : false,
+      "parameters" : [ "None:nameZ;Z:header #>I@MA:footerPT &R0XW" ]
+    }, {
+      "name" : "test_group_creation[None:name\"`m]{Ela:headerb:footerVHj:]",
+      "uid" : "eaf7a175f2940abe",
+      "parentUid" : "9f3c861b957873b0c894630eccfdef7e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1665738022312,
+        "stop" : 1665738029514,
+        "duration" : 7202
+      },
+      "flaky" : false,
+      "parameters" : [ "None:name\"`m]{Ela:headerb:footerVHj:" ]
+    } ],
+    "uid" : "test.group_creation_test"
+  } ]
+}
