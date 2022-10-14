@@ -1,0 +1,41 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\n  Left contains one more item: None:namey7-N:headeroJ:footerL}1%'\n  Use -v to get more diff",
+      "children" : [ {
+        "name" : "test_group_creation[None:namey7-N:headeroJ:footerL}1%']",
+        "uid" : "d2decc8fc3baf33d",
+        "parentUid" : "759c2dcafadb8c175fe8c115a3315f54",
+        "status" : "failed",
+        "time" : {
+          "start" : 1665738000463,
+          "stop" : 1665738007677,
+          "duration" : 7214
+        },
+        "flaky" : false,
+        "parameters" : [ "None:namey7-N:headeroJ:footerL}1%'" ]
+      } ],
+      "uid" : "759c2dcafadb8c175fe8c115a3315f54"
+    }, {
+      "name" : "AssertionError: assert [1:TEST GROUP...oterVHj:, ...] == [1:TEST GROUP...oterVHj:, ...]\n  At index 107 diff: None:name<|vu>*x:header~u!Vf-:footerb != 109:name*x:header~u!Vf-:footerb\n  Use -v to get more diff",
+      "children" : [ {
+        "name" : "test_group_creation[None:name<|vu>*x:header~u!Vf-:footerb]",
+        "uid" : "c89d517a4e6d65b4",
+        "parentUid" : "951a34d6345d88cb6ea05180fbddf74f",
+        "status" : "failed",
+        "time" : {
+          "start" : 1665738007924,
+          "stop" : 1665738015066,
+          "duration" : 7142
+        },
+        "flaky" : false,
+        "parameters" : [ "None:name<|vu>*x:header~u!Vf-:footerb" ]
+      } ],
+      "uid" : "951a34d6345d88cb6ea05180fbddf74f"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}
