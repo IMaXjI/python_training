@@ -6,9 +6,9 @@ Scenario Outline: Add new contact
 
 
   Examples:
-  |  id  | firstname  | lastname  |
-  |  id1 | firstname1 | lastname1 |
-  |  id2 | firstname2 | lastname2 |
+  | firstname  | lastname  |
+  | firstname1 | lastname1 |
+  | firstname2 | lastname2 |
 
 Scenario: Delete a contact
   Given a non-empty contact list
